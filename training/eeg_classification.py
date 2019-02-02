@@ -19,7 +19,7 @@ class EEG_Classifier():
         
         data = pickle.load(open(self.eeg_pkl_file, 'rb'), encoding='bytes')
 
-        x_train, y_train, x_test, y_test = data['x_train'], data['y_train'], data['x_test'], data['y_test']
+        x_train, y_train, x_test, y_test = data[b'x_train'], data[b'y_train'], data[b'x_test'], data[b'y_test']
 
         classifier = convolutional_encoder_model(x_train.shape[1], x_train.shape[2], self.num_classes)
 
