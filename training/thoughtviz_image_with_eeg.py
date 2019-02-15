@@ -50,7 +50,7 @@ def train_gan(input_noise_dim, batch_size, epochs, data_dir, saved_classifier_mo
     g.summary()
     d.summary()
     
-    eeg_data = pickle.load(open(os.path.join(data_dir, 'data.pkl'), "rb"))
+    eeg_data = pickle.load(open(os.path.join(data_dir, 'data.pkl'), "rb"), encoding='bytes')
     classifier = load_model(saved_classifier_model_file)
     classifier.summary()
     x_test = eeg_data[b'x_test']
@@ -141,7 +141,7 @@ def train():
     eeg_data_dir = os.path.join('../data/eeg/', dataset.lower())
     eeg_classifier_model_file = os.path.join('../models/eeg_models', dataset.lower(), 'run_final.h5')
 
-    train_gan(input_noise_dim=100, batch_size=batch_size, epochs=epochs, splits_save_dir=eeg_data_dir, saved_classifier_model_file=eeg_classifier_model_file, model_save_dir=model_save_dir, output_dir=output_dir, classifier_model_file=classifier_model_file)
+    train_gan(input_noise_dim=100, batch_size=batch_size, epochs=epochs, data_dir=eeg_data_dir, saved_classifier_model_file=eeg_classifier_model_file, model_save_dir=model_save_dir, output_dir=output_dir, classifier_model_file=classifier_model_file)
 
 
 if __name__ == '__main__':
