@@ -36,11 +36,11 @@ def train_gan(dataset, input_noise_dim, batch_size, epochs, model_save_dir, outp
     d.compile(loss=['binary_crossentropy','categorical_crossentropy'], optimizer=d_optim)
     d.trainable = True
 
-    g = generator_model(input_noise_dim + num_classes, 100) # Added second argument
+    g = generator_model(input_noise_dim, num_classes) # Added second argument
     g_optim = Adam(lr=adam_lr, beta_1=adam_beta_1)
     g.compile(loss='categorical_crossentropy', optimizer=g_optim)
 
-    d_on_g = generator_containing_discriminator(input_noise_dim + num_classes, g, d)
+    d_on_g = generator_containing_discriminator(input_noise_dim, num_classes, g, d)
     d_on_g.compile(loss=['binary_crossentropy','categorical_crossentropy'], optimizer=g_optim)
 
     g.summary()
