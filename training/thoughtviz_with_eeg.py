@@ -52,7 +52,7 @@ def train_gan(dataset, input_noise_dim, batch_size, epochs, data_dir, saved_clas
     g.summary()
     d.summary()
     
-    eeg_data = pickle.load(open(os.path.join(data_dir, 'data.pkl'), "rb"))
+    eeg_data = pickle.load(open(os.path.join(data_dir, 'data.pkl'), "rb"), encoding='bytes')
     classifier = load_model(saved_classifier_model_file)
     classifier.summary()
     x_test = eeg_data[b'x_test']
