@@ -115,7 +115,7 @@ def train_gan(dataset, input_noise_dim, batch_size, epochs, data_dir, saved_clas
 
 def train():
     folder_name_mapping = {0: 'Digit', 1: 'Char'}
-    dataset = 1
+    dataset = 0
     batch_size = 100
     run_id = 1
     epochs = 500
